@@ -1,6 +1,7 @@
 const { Thrall, Uther, Sylvanas } = heroes;
 const heroList = [Thrall,Uther,Sylvanas];
 const answer = heroList[0];
+var row = 0;
 
 
 function drawBoxes(container, row, col) {
@@ -43,28 +44,61 @@ function getInput() {
 
 function getAttempt(userGuess) {
     for (let i = 0; i < heroList.length; i++) {
-        if (userGuess === heroList[i].meta.name) {
+        if (userGuess === answer.meta.name) {
             correctAnswer(userGuess);
         }
-        else {
-            updateGrid(userGuess);
+        else if (userGuess === heroList[i].meta.name) {
+            const userGuessObj = heroList[i]
+            updateGrid(userGuessObj);
         }
     }
 }
 
 function correctAnswer(userGuess) {
-    alert('Correct! The answer was' + userGuess);
+    alert('Correct! The answer was ' + userGuess);
 }
 
 function updateGrid(userInput) {
     for (let i = 0; i < 6; i++) {
         const box = document.getElementById(`box${row}${i}`)
-        const userFaction = userInput.meta.faction;
-        const userClass = userInput.meta.class;
-        const userFirstSeen = userInput.meta.firstSeen;
-        const userGender = userInput.meta.gender;
-        const userSpecies = userInput.meta.species;
+
+        if (i === 0) {
+            const userName = userInput.meta.name;
+            box.textContent = userName;
+        }
+
+        if (i === 1) {
+            const userFaction = userInput.meta.faction;
+            factionCheck(userFaction, box);
+        }
+
+        if (i === 2) {
+            const userClass = userInput.meta.class;
+            classCheck(userClass, box);
+        }
+
+        if (i === 3) {
+            const userSpecies = userInput.meta.species;
+            speciesCheck(userSpecies, box);
+        }
+
+        if (i === 4) {
+            const userGender = userInput.meta.gender;
+            genderCheck(userGender, box);
+        }
+
+        if ( i === 5) {
+            const userFirstSeen = userInput.meta.firstSeen;
+            firstSeenCheck(userFirstSeen, box);
+        }
+
+    }
+    row++;
+    setTimeout(loserCheck, 1000)
+}
+
         
+function factionCheck(userFaction, box) {
         if (userFaction === answer.meta.faction) {
             box.classList.add('right');
             box.textContent = userFaction;
@@ -76,31 +110,40 @@ function updateGrid(userInput) {
         else {
             box.textContent = userFaction;
         }
+    }
 
-
+function classCheck(userClass, box) {
+    console.log(userClass);
+    console.log(box);
         if (userClass === answer.meta.class) {
             box.classList.add('right');
             box.textContent = userClass;
         }
-        else if (userClass.indexOf(answer.meta.Class) >= 0) {
+        else if (userClass.indexOf(answer.meta.class) >= 0) {
             box.classList.add('wrong')
             box.textContent = userClass;
         }
         else {
             box.textContent = userClass;
         }
+    }
+
+function speciesCheck(userSpecies, box) {
 
         if (userSpecies === answer.meta.species) {
             box.classList.add('right');
             box.textContent = userSpecies;
         }
-        else if (userFaction.indexOf(answer.meta.species) >= 0) {
+        else if (userSpecies.indexOf(answer.meta.species) >= 0) {
             box.classList.add('wrong')
             box.textContent = userSpecies;
         }
         else {
             box.textContent = userSpecies;
         }
+    }
+
+function genderCheck(userGender, box) {
 
         if (userGender === answer.meta.gender) {
             box.classList.add('right');
@@ -113,10 +156,13 @@ function updateGrid(userInput) {
         else {
             box.textContent = userGender;
         }
+    }
+
+function firstSeenCheck(userFirstSeen, box) {
 
         if (userFirstSeen === answer.meta.firstSeen) {
             box.classList.add('right');
-            box.textContent = userFaction;
+            box.textContent = userFirstSeen;
         }
         else if (userFirstSeen.indexOf(answer.meta.firstSeen) >= 0) {
             box.classList.add('wrong')
@@ -128,6 +174,10 @@ function updateGrid(userInput) {
 
     }
 
+function loserCheck() {
+    if (row === 5){
+        alert('Sorry, you are out of guesses! The answer was ' + answer.meta.name)
+    }
 }
 
 function onStart() {

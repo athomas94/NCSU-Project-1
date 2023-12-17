@@ -33,8 +33,8 @@ body {
 
 /* Define the actual boxes that animate during a guess */
 .box {
-    width: 60px;
-    height: 60px;
+    width: 100px;
+    height: 100px;
     border: 2px solid var(--empty);
     margin: 4px;
     color: #fff;
@@ -43,6 +43,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1rem;
     text-wrap: wrap;
+    text-align: center;
 }
 
 /* Set the states of the box after each guess using the color variables in the root */
