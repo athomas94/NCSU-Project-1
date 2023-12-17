@@ -45,7 +45,7 @@ function getInput() {
 function getAttempt(userGuess) {
     for (let i = 0; i < heroList.length; i++) {
         if (userGuess === answer.meta.name) {
-            correctAnswer(userGuess);
+            correctAnswer();
         }
         else if (userGuess === heroList[i].meta.name) {
             const userGuessObj = heroList[i]
@@ -54,8 +54,42 @@ function getAttempt(userGuess) {
     }
 }
 
-function correctAnswer(userGuess) {
-    alert('Correct! The answer was ' + userGuess);
+function correctAnswer() {
+    for (let i = 0; i < 6; i++) {
+        const box = document.getElementById(`box${row}${i}`)
+
+        if (i === 0) {
+            const userName = answer.meta.name;
+            box.classList.add('right');
+            box.textContent = userName;
+        }
+
+        if (i === 1) {
+            const userFaction = answer.meta.faction;
+            factionCheck(userFaction, box);
+        }
+
+        if (i === 2) {
+            const userClass = answer.meta.class;
+            classCheck(userClass, box);
+        }
+
+        if (i === 3) {
+            const userSpecies = answer.meta.species;
+            speciesCheck(userSpecies, box);
+        }
+
+        if (i === 4) {
+            const userGender = answer.meta.gender;
+            genderCheck(userGender, box);
+        }
+
+        if ( i === 5) {
+            const userFirstSeen = answer.meta.firstSeen;
+            firstSeenCheck(userFirstSeen, box);
+        }
+
+    }
 }
 
 function updateGrid(userInput) {
@@ -94,7 +128,10 @@ function updateGrid(userInput) {
 
     }
     row++;
-    setTimeout(loserCheck, 1000)
+
+    if (row === 5){
+        setTimeout(loserCheck, 1000)
+    }
 }
 
         
@@ -175,8 +212,9 @@ function firstSeenCheck(userFirstSeen, box) {
     }
 
 function loserCheck() {
+    console.log('Check if user lost');
     if (row === 5){
-        alert('Sorry, you are out of guesses! The answer was ' + answer.meta.name)
+        window.alert('Sorry, you are out of guesses! The answer was ' + answer.meta.name)
     }
 }
 
