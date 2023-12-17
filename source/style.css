@@ -23,8 +23,8 @@ body {
 /* Set the grid that will populate as guesses occur */
 .grid {
     display: grid;
-    grid-template-columns: repeat(5, auto);
-    grid-template-rows: repeat(6,auto);
+    grid-template-columns: repeat(6, auto);
+    grid-template-rows: repeat(5,auto);
     justify-items: center;
     justify-content: center;
     align-items: center;
