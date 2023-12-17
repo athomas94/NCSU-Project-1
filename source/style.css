@@ -1,9 +1,10 @@
+/* Set the entire body and HTML to have the default color variable defined in the root */
 html,
 body {
     background: var(--default);
 }
 
-
+/* Define the colors that will be used on repeat throughout the project */
 :root {
      --default: #121213;
      --empty: #3a3a3c;
@@ -11,6 +12,7 @@ body {
      --correct: #538d4e;
      }
 
+/* Set the properties of the game container */
 #game {
     display: grid;
     place-items: center;
@@ -18,6 +20,7 @@ body {
     height: 600px;
 }
 
+/* Set the grid that will populate as guesses occur */
 .grid {
     display: grid;
     grid-template-columns: repeat(5, auto);
@@ -28,6 +31,7 @@ body {
     align-content: space-around;
 }
 
+/* Define the actual boxes that animate during a guess */
 .box {
     width: 60px;
     height: 60px;
@@ -41,6 +45,7 @@ body {
     text-wrap: wrap;
 }
 
+/* Set the states of the box after each guess using the color variables in the root */
 .box.empty {
     background: var(--empty);
 }
