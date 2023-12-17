@@ -58,3 +58,19 @@ body {
 .box.right {
     background: var(--correct);
 }
+
+.animation {
+    animation: flipping 0.5s ease;
+}
+
+@keyframes flipping {
+    0% {
+        transform: scaleX(1);
+    }
+    50% {
+        transform: scaleX(0);
+    }
+    100% {
+        transform: scaleX(1);
+    }
+}

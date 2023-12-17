@@ -1,6 +1,6 @@
-const { Thrall, Uther, Sylvanas } = heroes;
-const heroList = [Thrall,Uther,Sylvanas];
-const answer = heroList[0];
+const { Thrall, Uther, Sylvanas, Jaina, Anduin, Greymane, Lorthemar } = heroes;
+const heroList = [Thrall,Uther,Sylvanas, Jaina, Anduin, Greymane, Lorthemar];
+const answer = getRandomHero();
 var row = 0;
 
 
@@ -27,8 +27,8 @@ function drawGrid(container) {
 }
 
 function getRandomHero() {
-    // Math.floor(Math.random()*8)
-    return heroList[0];
+    const randomHeroIndex = Math.floor(Math.random() * heroList.length);
+    return heroList[randomHeroIndex];
 }
 
 function getInput() {
@@ -55,76 +55,90 @@ function getAttempt(userGuess) {
 }
 
 function correctAnswer() {
+    const animation_duration = 500;
+
     for (let i = 0; i < 6; i++) {
         const box = document.getElementById(`box${row}${i}`)
 
-        if (i === 0) {
-            const userName = answer.meta.name;
-            box.classList.add('right');
-            box.textContent = userName;
-        }
+        setTimeout(() => {
+            if (i === 0) {
+                const userName = answer.meta.name;
+                box.classList.add('right');
+                box.textContent = userName;
+            }
 
-        if (i === 1) {
-            const userFaction = answer.meta.faction;
-            factionCheck(userFaction, box);
-        }
+            if (i === 1) {
+                const userFaction = answer.meta.faction;
+                factionCheck(userFaction, box);
+            }
 
-        if (i === 2) {
-            const userClass = answer.meta.class;
-            classCheck(userClass, box);
-        }
+            if (i === 2) {
+                const userClass = answer.meta.class;
+                classCheck(userClass, box);
+            }
 
-        if (i === 3) {
-            const userSpecies = answer.meta.species;
-            speciesCheck(userSpecies, box);
-        }
+            if (i === 3) {
+                const userSpecies = answer.meta.species;
+                speciesCheck(userSpecies, box);
+            }
 
-        if (i === 4) {
-            const userGender = answer.meta.gender;
-            genderCheck(userGender, box);
-        }
+            if (i === 4) {
+                const userGender = answer.meta.gender;
+                genderCheck(userGender, box);
+            }
 
-        if ( i === 5) {
-            const userFirstSeen = answer.meta.firstSeen;
-            firstSeenCheck(userFirstSeen, box);
-        }
+            if ( i === 5) {
+                const userFirstSeen = answer.meta.firstSeen;
+                firstSeenCheck(userFirstSeen, box);
+            }
+        }, ((i + 1) * animation_duration) / 2);
+
+        box.classList.add('animation');
+        box.style.animationDelay = `${(i * animation_duration) / 2}ms`;
 
     }
 }
 
 function updateGrid(userInput) {
+    const animation_duration = 500; //ms
+    
     for (let i = 0; i < 6; i++) {
         const box = document.getElementById(`box${row}${i}`)
 
+        setTimeout(() => {
         if (i === 0) {
-            const userName = userInput.meta.name;
-            box.textContent = userName;
-        }
+                const userName = userInput.meta.name;
+                box.textContent = userName;
+            }
 
-        if (i === 1) {
-            const userFaction = userInput.meta.faction;
-            factionCheck(userFaction, box);
-        }
+            if (i === 1) {
+                const userFaction = userInput.meta.faction;
+                factionCheck(userFaction, box);
+            }
 
-        if (i === 2) {
-            const userClass = userInput.meta.class;
-            classCheck(userClass, box);
-        }
+            if (i === 2) {
+                const userClass = userInput.meta.class;
+                classCheck(userClass, box);
+            }
 
-        if (i === 3) {
-            const userSpecies = userInput.meta.species;
-            speciesCheck(userSpecies, box);
-        }
+            if (i === 3) {
+                const userSpecies = userInput.meta.species;
+                speciesCheck(userSpecies, box);
+            }
 
-        if (i === 4) {
-            const userGender = userInput.meta.gender;
-            genderCheck(userGender, box);
-        }
+            if (i === 4) {
+                const userGender = userInput.meta.gender;
+                genderCheck(userGender, box);
+            }
 
-        if ( i === 5) {
-            const userFirstSeen = userInput.meta.firstSeen;
-            firstSeenCheck(userFirstSeen, box);
-        }
+            if ( i === 5) {
+                const userFirstSeen = userInput.meta.firstSeen;
+                firstSeenCheck(userFirstSeen, box);
+            }
+        }, ((i + 1) * animation_duration) / 2); 
+
+            box.classList.add('animation');
+            box.style.animationDelay = `${(i * animation_duration) / 2}ms`;
 
     }
     row++;
@@ -220,8 +234,6 @@ function loserCheck() {
 
 function onStart() {
     const game = document.getElementById('game');
-    const answer = getRandomHero();
-    console.log(answer);
     drawGrid(game);
 }
 

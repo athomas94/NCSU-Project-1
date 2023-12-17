@@ -66,7 +66,7 @@ const heroes = {
         }
     },
 
-    "Lor'themar": {
+    "Lorthemar": {
         "meta": {
             "name": "Lor'themar",
             "faction": "Horde",
