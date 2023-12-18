@@ -1,8 +1,9 @@
-const { Thrall, Uther, Sylvanas, Jaina, Anduin, Greymane, Lorthemar } = heroes;
-const heroList = [Thrall,Uther,Sylvanas, Jaina, Anduin, Greymane, Lorthemar];
+const { Thrall, Uther, Sylvanas, Jaina, Anduin, Greymane, Lorthemar, Kaelthas } = heroes;
+const heroList = [Thrall, Uther, Sylvanas, Jaina, Anduin, Greymane, Lorthemar, Kaelthas];
 const answer = getRandomHero();
 var row = 0;
-
+console.log(answer);
+console.log(heroList.length);
 
 function drawBoxes(container, row, col) {
     const box = document.createElement('div');
@@ -43,6 +44,7 @@ function getInput() {
 }
 
 function getAttempt(userGuess) {
+    console.log(userGuess);
     for (let i = 0; i < heroList.length; i++) {
         if (userGuess === answer.meta.name) {
             correctAnswer();

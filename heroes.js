@@ -68,12 +68,23 @@ const heroes = {
 
     "Lorthemar": {
         "meta": {
-            "name": "Lor'themar",
+            "name": "Lorthemar",
             "faction": "Horde",
             "species": "High Elf, Blood Elf",
             "gender": "Male",
             "class": "Warrior",
             "firstSeen": "World of Warcraft: Burning Crusade"
+        }
+    },
+
+    "Kaelthas": {
+        "meta": {
+            "name": "Kaelthas",
+            "faction": "Alliance, Kirin Tor, Legion",
+            "species": "High Elf, Blood Elf",
+            "gender": "Male",
+            "class": "Mage",
+            "firstSeen": "Warcraft III: Frozen Throne"
         }
     }
 }
