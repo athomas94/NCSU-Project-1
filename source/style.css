@@ -44,6 +44,18 @@ body {
     font-size: 1rem;
     text-wrap: wrap;
     text-align: center;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.box img {
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--empty);
+    margin: 4px;
+    text-align: center;
+    overflow: hidden;
+    object-fit: cover;
 }
 
 /* Set the states of the box after each guess using the color variables in the root */

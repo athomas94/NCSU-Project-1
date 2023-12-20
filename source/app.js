@@ -1,9 +1,8 @@
-const { Thrall, Uther, Sylvanas, Jaina, Anduin, Greymane, Lorthemar, Kaelthas } = heroes;
-const heroList = [Thrall, Uther, Sylvanas, Jaina, Anduin, Greymane, Lorthemar, Kaelthas];
+//const { Thrall, Uther, Sylvanas, Jaina, Anduin, Greymane, Lorthemar, Kaelthas } = heroes;
+const heroList = heroes
 const answer = getRandomHero();
 var row = 0;
 console.log(answer);
-console.log(heroList.length);
 
 function drawBoxes(container, row, col) {
     const box = document.createElement('div');
@@ -39,65 +38,22 @@ function getInput() {
             const userEntry = document.getElementById('answerBox');
             console.log(userEntry.value);
             getAttempt(userEntry.value);
+            userEntry.value='';
         }
     }
 }
 
 function getAttempt(userGuess) {
     console.log(userGuess);
+    let updatedGuess = userGuess.replaceAll(/[^a-zA-Z]/gi, "");
+    updatedGuess = updatedGuess.toLowerCase();
+    console.log(updatedGuess);
     for (let i = 0; i < heroList.length; i++) {
-        if (userGuess === answer.meta.name) {
-            correctAnswer();
-        }
-        else if (userGuess === heroList[i].meta.name) {
+        let parsedAnswer = heroList[i].name.replaceAll(/[^a-zA-Z]/gi, "");
+        if (updatedGuess === parsedAnswer.toLowerCase()) {
             const userGuessObj = heroList[i]
             updateGrid(userGuessObj);
         }
-    }
-}
-
-function correctAnswer() {
-    const animation_duration = 500;
-
-    for (let i = 0; i < 6; i++) {
-        const box = document.getElementById(`box${row}${i}`)
-
-        setTimeout(() => {
-            if (i === 0) {
-                const userName = answer.meta.name;
-                box.classList.add('right');
-                box.textContent = userName;
-            }
-
-            if (i === 1) {
-                const userFaction = answer.meta.faction;
-                factionCheck(userFaction, box);
-            }
-
-            if (i === 2) {
-                const userClass = answer.meta.class;
-                classCheck(userClass, box);
-            }
-
-            if (i === 3) {
-                const userSpecies = answer.meta.species;
-                speciesCheck(userSpecies, box);
-            }
-
-            if (i === 4) {
-                const userGender = answer.meta.gender;
-                genderCheck(userGender, box);
-            }
-
-            if ( i === 5) {
-                const userFirstSeen = answer.meta.firstSeen;
-                firstSeenCheck(userFirstSeen, box);
-            }
-        }, ((i + 1) * animation_duration) / 2);
-
-        box.classList.add('animation');
-        box.style.animationDelay = `${(i * animation_duration) / 2}ms`;
-
     }
 }
 
@@ -109,32 +65,33 @@ function updateGrid(userInput) {
 
         setTimeout(() => {
         if (i === 0) {
-                const userName = userInput.meta.name;
-                box.textContent = userName;
+                const icon = document.createElement('img');
+                icon.src = userInput.icon;
+                box.appendChild(icon);
             }
 
             if (i === 1) {
-                const userFaction = userInput.meta.faction;
+                const userFaction = userInput.faction;
                 factionCheck(userFaction, box);
             }
 
             if (i === 2) {
-                const userClass = userInput.meta.class;
+                const userClass = userInput.class;
                 classCheck(userClass, box);
             }
 
             if (i === 3) {
-                const userSpecies = userInput.meta.species;
+                const userSpecies = userInput.species;
                 speciesCheck(userSpecies, box);
             }
 
             if (i === 4) {
-                const userGender = userInput.meta.gender;
+                const userGender = userInput.gender;
                 genderCheck(userGender, box);
             }
 
             if ( i === 5) {
-                const userFirstSeen = userInput.meta.firstSeen;
+                const userFirstSeen = userInput.firstSeen;
                 firstSeenCheck(userFirstSeen, box);
             }
         }, ((i + 1) * animation_duration) / 2); 
@@ -152,11 +109,11 @@ function updateGrid(userInput) {
 
         
 function factionCheck(userFaction, box) {
-        if (userFaction === answer.meta.faction) {
+        if (userFaction === answer.faction) {
             box.classList.add('right');
             box.textContent = userFaction;
         }
-        else if (userFaction.indexOf(answer.meta.faction) >= 0) {
+        else if (userFaction.indexOf(answer.faction) >= 0) {
             box.classList.add('wrong')
             box.textContent = userFaction;
         }
@@ -168,11 +125,11 @@ function factionCheck(userFaction, box) {
 function classCheck(userClass, box) {
     console.log(userClass);
     console.log(box);
-        if (userClass === answer.meta.class) {
+        if (userClass === answer.class) {
             box.classList.add('right');
             box.textContent = userClass;
         }
-        else if (userClass.indexOf(answer.meta.class) >= 0) {
+        else if (userClass.indexOf(answer.class) >= 0) {
             box.classList.add('wrong')
             box.textContent = userClass;
         }
@@ -183,11 +140,11 @@ function classCheck(userClass, box) {
 
 function speciesCheck(userSpecies, box) {
 
-        if (userSpecies === answer.meta.species) {
+        if (userSpecies === answer.species) {
             box.classList.add('right');
             box.textContent = userSpecies;
         }
-        else if (userSpecies.indexOf(answer.meta.species) >= 0) {
+        else if (userSpecies.indexOf(answer.species) >= 0) {
             box.classList.add('wrong')
             box.textContent = userSpecies;
         }
@@ -198,11 +155,11 @@ function speciesCheck(userSpecies, box) {
 
 function genderCheck(userGender, box) {
 
-        if (userGender === answer.meta.gender) {
+        if (userGender === answer.gender) {
             box.classList.add('right');
             box.textContent = userGender;
         }
-        else if (userGender.indexOf(answer.meta.gender) >= 0) {
+        else if (userGender.indexOf(answer.gender) >= 0) {
             box.classList.add('wrong')
             box.textContent = userGender;
         }
@@ -213,11 +170,11 @@ function genderCheck(userGender, box) {
 
 function firstSeenCheck(userFirstSeen, box) {
 
-        if (userFirstSeen === answer.meta.firstSeen) {
+        if (userFirstSeen === answer.firstSeen) {
             box.classList.add('right');
             box.textContent = userFirstSeen;
         }
-        else if (userFirstSeen.indexOf(answer.meta.firstSeen) >= 0) {
+        else if (userFirstSeen.indexOf(answer.firstSeen) >= 0) {
             box.classList.add('wrong')
             box.textContent = userFirstSeen;
         }
@@ -230,7 +187,7 @@ function firstSeenCheck(userFirstSeen, box) {
 function loserCheck() {
     console.log('Check if user lost');
     if (row === 5){
-        window.alert('Sorry, you are out of guesses! The answer was ' + answer.meta.name)
+        window.alert('Sorry, you are out of guesses! The answer was ' + answer.name)
     }
 }
 
