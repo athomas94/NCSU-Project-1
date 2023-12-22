@@ -2,6 +2,14 @@
 const heroList = heroes
 const answer = getRandomHero();
 var row = 0;
+var attemptNumber = 1;
+let factionCorrect = false;
+let classCorrect = false;
+let raceCorrect = false;
+let genderCorrect = false;
+let appearanceCorrect = false;
+let winner = false;
+
 console.log(answer);
 
 function drawBoxes(container, row, col) {
@@ -36,7 +44,6 @@ function getInput() {
         const key = e.key;
         if (key === 'Enter') {
             const userEntry = document.getElementById('answerBox');
-            console.log(userEntry.value);
             getAttempt(userEntry.value);
             userEntry.value='';
         }
@@ -44,10 +51,8 @@ function getInput() {
 }
 
 function getAttempt(userGuess) {
-    console.log(userGuess);
     let updatedGuess = userGuess.replaceAll(/[^a-zA-Z]/gi, "");
     updatedGuess = updatedGuess.toLowerCase();
-    console.log(updatedGuess);
     for (let i = 0; i < heroList.length; i++) {
         let parsedAnswer = heroList[i].name.replaceAll(/[^a-zA-Z]/gi, "");
         if (updatedGuess === parsedAnswer.toLowerCase()) {
@@ -62,7 +67,7 @@ function updateGrid(userInput) {
     
     for (let i = 0; i < 6; i++) {
         const box = document.getElementById(`box${row}${i}`)
-
+        winnerCheck();
         setTimeout(() => {
         if (i === 0) {
                 const icon = document.createElement('img');
@@ -98,18 +103,27 @@ function updateGrid(userInput) {
 
             box.classList.add('animation');
             box.style.animationDelay = `${(i * animation_duration) / 2}ms`;
-
     }
     row++;
+    attemptNumber++;
+    // console.log('Faction match: ' + factionCorrect);
+    // console.log('Class match: ' + classCorrect);
+    // console.log('Race match: ' + raceCorrect);
+    // console.log('Gender match: ' + genderCorrect);
+    // console.log('Appearance match: ' + appearanceCorrect);
+    // setTimeout(winnerCheck(), 5000);
 
     if (row === 5){
-        setTimeout(loserCheck, 1000)
+        setTimeout(loserCheck(), 2000)
     }
 }
 
         
 function factionCheck(userFaction, box) {
+    // console.log('Faction match: ' + factionCorrect);
         if (userFaction === answer.faction) {
+            factionCorrect = true;
+            // console.log('Faction match: ' + factionCorrect);
             box.classList.add('right');
             box.textContent = userFaction;
         }
@@ -123,11 +137,12 @@ function factionCheck(userFaction, box) {
     }
 
 function classCheck(userClass, box) {
-    console.log(userClass);
-    console.log(box);
+    // console.log('Class match: ' + classCorrect);
         if (userClass === answer.class) {
             box.classList.add('right');
             box.textContent = userClass;
+            classCorrect = true;
+            // console.log('Class match: ' + classCorrect);
         }
         else if (userClass.indexOf(answer.class) >= 0) {
             box.classList.add('wrong')
@@ -139,10 +154,12 @@ function classCheck(userClass, box) {
     }
 
 function speciesCheck(userSpecies, box) {
-
+    // console.log('Race match: ' + raceCorrect);
         if (userSpecies === answer.species) {
             box.classList.add('right');
             box.textContent = userSpecies;
+            raceCorrect = true;
+            // console.log('Race match: ' + raceCorrect);
         }
         else if (userSpecies.indexOf(answer.species) >= 0) {
             box.classList.add('wrong')
@@ -154,10 +171,12 @@ function speciesCheck(userSpecies, box) {
     }
 
 function genderCheck(userGender, box) {
-
+    // console.log('Gender match: ' + genderCorrect);
         if (userGender === answer.gender) {
             box.classList.add('right');
             box.textContent = userGender;
+            genderCorrect = true;
+            console.log('Gender match (function): ' + genderCorrect);
         }
         else if (userGender.indexOf(answer.gender) >= 0) {
             box.classList.add('wrong')
@@ -169,10 +188,12 @@ function genderCheck(userGender, box) {
     }
 
 function firstSeenCheck(userFirstSeen, box) {
-
+    // console.log('Appearance match: ' + appearanceCorrect);
         if (userFirstSeen === answer.firstSeen) {
             box.classList.add('right');
             box.textContent = userFirstSeen;
+            appearanceCorrect = true;
+            // console.log('Appearance match: ' + appearanceCorrect);
         }
         else if (userFirstSeen.indexOf(answer.firstSeen) >= 0) {
             box.classList.add('wrong')
@@ -184,9 +205,23 @@ function firstSeenCheck(userFirstSeen, box) {
 
     }
 
+function winnerCheck() {
+    if (factionCorrect && classCorrect && raceCorrect && genderCorrect && appearanceCorrect) {
+        winner = true;
+        alert('You win!')
+    }
+    else {
+        console.log('Faction match: ' + factionCorrect);
+        console.log('Class match: ' + classCorrect);
+        console.log('Race match: ' + raceCorrect);
+        console.log('Gender match: ' + genderCorrect);
+        console.log('Appearance match: ' + appearanceCorrect);
+    }
+}
+
 function loserCheck() {
     console.log('Check if user lost');
-    if (row === 5){
+    if (row === 5 && !winner){
         window.alert('Sorry, you are out of guesses! The answer was ' + answer.name)
     }
 }

@@ -7,13 +7,23 @@
     <link rel = "stylesheet" href = "./style.css">
 </head>
 <body>
-    <div id = "game"></div>
-        <div class="grid">
-            <input type = "text" id = "answerBox" placeholder = "Take a guess" maxlength = "20">
-            <div class="box right">Correct</div>
-            <div class="box wrong">Partially Correct</div>
-            <div class="box">Incorrect</div>
+    <div id = "game">
+        <div class = "grid">
+            <div class="headerBox"></div>
+            <div class="headerBox">Faction</div>
+            <div class="headerBox">Class</div>
+            <div class="headerBox">Race</div>
+            <div class="headerBox">Gender</div>
+            <div class="headerBox">First Appearance</div>
         </div>
+    </div>
+    
+    <div class="grid" style="margin-top: 100px;">
+        <input type = "text" id = "answerBox" placeholder = "Take a guess" maxlength = "20"><br>
+        <div class="box right">Correct</div>
+        <div class="box wrong">Partially Correct</div>
+        <div class="box">Incorrect</div>
+    </div>
 
     <script src = "../heroes.js"></script>
     <script src = "./app.js"></script>
