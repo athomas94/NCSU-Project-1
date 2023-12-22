@@ -1,4 +1,3 @@
-//const { Thrall, Uther, Sylvanas, Jaina, Anduin, Greymane, Lorthemar, Kaelthas } = heroes;
 const heroList = heroes
 const answer = getRandomHero();
 var row = 0;
@@ -67,7 +66,6 @@ function updateGrid(userInput) {
     
     for (let i = 0; i < 6; i++) {
         const box = document.getElementById(`box${row}${i}`)
-        winnerCheck();
         setTimeout(() => {
         if (i === 0) {
                 const icon = document.createElement('img');
@@ -77,27 +75,33 @@ function updateGrid(userInput) {
 
             if (i === 1) {
                 const userFaction = userInput.faction;
+                console.log(userFaction);
                 factionCheck(userFaction, box);
             }
 
             if (i === 2) {
                 const userClass = userInput.class;
+                console.log(userClass);
                 classCheck(userClass, box);
             }
 
             if (i === 3) {
                 const userSpecies = userInput.species;
+                console.log(userSpecies);
                 speciesCheck(userSpecies, box);
             }
 
             if (i === 4) {
                 const userGender = userInput.gender;
+                console.log(userGender);
                 genderCheck(userGender, box);
             }
 
             if ( i === 5) {
                 const userFirstSeen = userInput.firstSeen;
+                console.log(userFirstSeen);
                 firstSeenCheck(userFirstSeen, box);
+                winnerCheck();
             }
         }, ((i + 1) * animation_duration) / 2); 
 
@@ -113,100 +117,119 @@ function updateGrid(userInput) {
     // console.log('Appearance match: ' + appearanceCorrect);
     // setTimeout(winnerCheck(), 5000);
 
-    if (row === 5){
-        setTimeout(loserCheck(), 2000)
-    }
+    // if (row === 5){
+    //     setTimeout(loserCheck(), 2000)
+    // }
 }
 
         
 function factionCheck(userFaction, box) {
-    // console.log('Faction match: ' + factionCorrect);
+    return new Promise((resolve) => {
         if (userFaction === answer.faction) {
             factionCorrect = true;
-            // console.log('Faction match: ' + factionCorrect);
             box.classList.add('right');
             box.textContent = userFaction;
+            resolve(true);
         }
         else if (userFaction.indexOf(answer.faction) >= 0) {
             box.classList.add('wrong')
             box.textContent = userFaction;
+            resolve(false);
         }
         else {
             box.textContent = userFaction;
+            resolve(false);
         }
-    }
+    });
+}
 
 function classCheck(userClass, box) {
-    // console.log('Class match: ' + classCorrect);
+    return new Promise((resolve) => {
         if (userClass === answer.class) {
             box.classList.add('right');
             box.textContent = userClass;
             classCorrect = true;
-            // console.log('Class match: ' + classCorrect);
+            resolve(true);
         }
         else if (userClass.indexOf(answer.class) >= 0) {
             box.classList.add('wrong')
             box.textContent = userClass;
+            resolve(false);
         }
         else {
             box.textContent = userClass;
+            resolve(false);
         }
-    }
+    });
+}
 
 function speciesCheck(userSpecies, box) {
-    // console.log('Race match: ' + raceCorrect);
+    return new Promise((resolve) => {
         if (userSpecies === answer.species) {
             box.classList.add('right');
             box.textContent = userSpecies;
             raceCorrect = true;
-            // console.log('Race match: ' + raceCorrect);
+            resolve(true);
         }
         else if (userSpecies.indexOf(answer.species) >= 0) {
             box.classList.add('wrong')
             box.textContent = userSpecies;
+            resolve(false);
         }
         else {
             box.textContent = userSpecies;
+            resolve(false);
         }
-    }
+    });
+}
 
 function genderCheck(userGender, box) {
-    // console.log('Gender match: ' + genderCorrect);
+    return new Promise((resolve) => {
         if (userGender === answer.gender) {
             box.classList.add('right');
             box.textContent = userGender;
             genderCorrect = true;
-            console.log('Gender match (function): ' + genderCorrect);
+            resolve(true);
         }
         else if (userGender.indexOf(answer.gender) >= 0) {
             box.classList.add('wrong')
             box.textContent = userGender;
+            resolve(false);
         }
         else {
             box.textContent = userGender;
+            resolve(false);
         }
-    }
+    });
+}
 
 function firstSeenCheck(userFirstSeen, box) {
-    // console.log('Appearance match: ' + appearanceCorrect);
+    return new Promise((resolve) => {
         if (userFirstSeen === answer.firstSeen) {
             box.classList.add('right');
             box.textContent = userFirstSeen;
             appearanceCorrect = true;
-            // console.log('Appearance match: ' + appearanceCorrect);
-        }
-        else if (userFirstSeen.indexOf(answer.firstSeen) >= 0) {
-            box.classList.add('wrong')
+            resolve(true);
+        } else if (userFirstSeen.indexOf(answer.firstSeen) >= 0) {
+            box.classList.add('wrong');
             box.textContent = userFirstSeen;
-        }
-        else {
+            resolve(false);
+        } else {
             box.textContent = userFirstSeen;
+            resolve(false);
         }
+    });
+}
+      
 
-    }
+async function winnerCheck() {
+    let localFaction = await factionCheck();
+    let localClass = await classCheck();
+    let localRace = await speciesnCheck();
+    let localGender = await genderCheck();
+    let localAppearance = await firstSeenCheck();
 
-function winnerCheck() {
-    if (factionCorrect && classCorrect && raceCorrect && genderCorrect && appearanceCorrect) {
+    if (localFaction && localClass && localRace && localGender && localAppearance) {
         winner = true;
         alert('You win!')
     }
