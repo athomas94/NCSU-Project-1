@@ -104,8 +104,8 @@ function updateGrid(userInput) {
                 console.log(userFirstSeen);
                 firstSeenCheck(userFirstSeen, box);
             }
+            winnerCheck()
         }, ((i + 1) * animation_duration) / 2); 
-
             box.classList.add('animation');
             box.style.animationDelay = `${(i * animation_duration) / 2}ms`;
     }
@@ -121,7 +121,7 @@ function updateGrid(userInput) {
     // if (row === 5){
     //     setTimeout(loserCheck(), 2000)
     // }
-    winnerCheck();
+    
 }
 
         
@@ -203,9 +203,9 @@ function firstSeenCheck(userFirstSeen, box) {
 
 function winnerCheck() {
     
-    if (factionCorrect && classCorrect && raceCorrect && genderCheckr && appearanceCorrect) {
+    if (factionCorrect && classCorrect && raceCorrect && genderCorrect && appearanceCorrect) {
         winner = true;
-        alert('You win!')
+        setTimeout(function() { alert('You win!'); }, 500)
     }
     else {
         console.log('Faction match: ' + factionCorrect);
