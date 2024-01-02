@@ -137,6 +137,7 @@ function factionCheck(userFaction, box) {
             resolve(false);
         }
         else {
+            
             box.textContent = userFaction;
             resolve(false);
         }

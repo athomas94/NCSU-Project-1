@@ -131,7 +131,7 @@ const heroes = [
         "name": "Kelthuzad",
         "icon": '../assets/kelthuzad.jpg',
         "faction": "Cult of the Damned, Scourge",
-        "species": "Human",
+        "species": "Human, Undead",
         "gender": "Male",
         "class": "Necromancer, Lich",
         "firstSeen": "Warcraft III: Reign of Chaos"
