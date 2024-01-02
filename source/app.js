@@ -1,5 +1,6 @@
 const heroList = heroes
 const answer = getRandomHero();
+let userGuess = null;
 var row = 0;
 var attemptNumber = 1;
 let factionCorrect = false;
@@ -55,6 +56,7 @@ function getAttempt(userGuess) {
     for (let i = 0; i < heroList.length; i++) {
         let parsedAnswer = heroList[i].name.replaceAll(/[^a-zA-Z]/gi, "");
         if (updatedGuess === parsedAnswer.toLowerCase()) {
+            this.userGuess = heroList[i]
             const userGuessObj = heroList[i]
             updateGrid(userGuessObj);
         }
@@ -101,7 +103,6 @@ function updateGrid(userInput) {
                 const userFirstSeen = userInput.firstSeen;
                 console.log(userFirstSeen);
                 firstSeenCheck(userFirstSeen, box);
-                winnerCheck();
             }
         }, ((i + 1) * animation_duration) / 2); 
 
@@ -120,77 +121,60 @@ function updateGrid(userInput) {
     // if (row === 5){
     //     setTimeout(loserCheck(), 2000)
     // }
+    winnerCheck();
 }
 
         
 function factionCheck(userFaction, box) {
-    return new Promise((resolve) => {
-        if (userFaction === answer.faction) {
-            factionCorrect = true;
-            box.classList.add('right');
-            box.textContent = userFaction;
-            resolve(true);
-        }
-        else if (userFaction.indexOf(answer.faction) >= 0) {
-            box.classList.add('wrong')
-            box.textContent = userFaction;
-            resolve(false);
-        }
-        else {
-            
-            box.textContent = userFaction;
-            resolve(false);
-        }
-    });
+    if (userFaction === answer.faction) {
+        factionCorrect = true;
+        box.classList.add('right');
+        box.textContent = userFaction;
+    }
+    else if (userFaction.indexOf(answer.faction) >= 0) {
+        box.classList.add('wrong')
+        box.textContent = userFaction;
+    }
+    else {
+        box.textContent = userFaction;
+    }
 }
 
 function classCheck(userClass, box) {
-    return new Promise((resolve) => {
         if (userClass === answer.class) {
             box.classList.add('right');
             box.textContent = userClass;
             classCorrect = true;
-            resolve(true);
         }
         else if (userClass.indexOf(answer.class) >= 0) {
             box.classList.add('wrong')
             box.textContent = userClass;
-            resolve(false);
         }
         else {
             box.textContent = userClass;
-            resolve(false);
         }
-    });
 }
 
 function speciesCheck(userSpecies, box) {
-    return new Promise((resolve) => {
         if (userSpecies === answer.species) {
             box.classList.add('right');
             box.textContent = userSpecies;
             raceCorrect = true;
-            resolve(true);
         }
         else if (userSpecies.indexOf(answer.species) >= 0) {
             box.classList.add('wrong')
             box.textContent = userSpecies;
-            resolve(false);
         }
         else {
             box.textContent = userSpecies;
-            resolve(false);
         }
-    });
 }
 
 function genderCheck(userGender, box) {
-    return new Promise((resolve) => {
         if (userGender === answer.gender) {
             box.classList.add('right');
             box.textContent = userGender;
             genderCorrect = true;
-            resolve(true);
         }
         else if (userGender.indexOf(answer.gender) >= 0) {
             box.classList.add('wrong')
@@ -201,36 +185,25 @@ function genderCheck(userGender, box) {
             box.textContent = userGender;
             resolve(false);
         }
-    });
 }
 
 function firstSeenCheck(userFirstSeen, box) {
-    return new Promise((resolve) => {
         if (userFirstSeen === answer.firstSeen) {
             box.classList.add('right');
             box.textContent = userFirstSeen;
             appearanceCorrect = true;
-            resolve(true);
         } else if (userFirstSeen.indexOf(answer.firstSeen) >= 0) {
             box.classList.add('wrong');
             box.textContent = userFirstSeen;
-            resolve(false);
         } else {
             box.textContent = userFirstSeen;
-            resolve(false);
         }
-    });
 }
       
 
-async function winnerCheck() {
-    let localFaction = await factionCheck();
-    let localClass = await classCheck();
-    let localRace = await speciesnCheck();
-    let localGender = await genderCheck();
-    let localAppearance = await firstSeenCheck();
-
-    if (localFaction && localClass && localRace && localGender && localAppearance) {
+function winnerCheck() {
+    
+    if (factionCorrect && classCorrect && raceCorrect && genderCheckr && appearanceCorrect) {
         winner = true;
         alert('You win!')
     }
