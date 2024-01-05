@@ -77,33 +77,33 @@ function updateGrid(userInput) {
 
             if (i === 1) {
                 const userFaction = userInput.faction;
-                console.log(userFaction);
                 factionCheck(userFaction, box);
             }
 
             if (i === 2) {
                 const userClass = userInput.class;
-                console.log(userClass);
                 classCheck(userClass, box);
             }
 
             if (i === 3) {
                 const userSpecies = userInput.species;
-                console.log(userSpecies);
                 speciesCheck(userSpecies, box);
             }
 
             if (i === 4) {
                 const userGender = userInput.gender;
-                console.log(userGender);
                 genderCheck(userGender, box);
             }
 
             if ( i === 5) {
                 const userFirstSeen = userInput.firstSeen;
-                console.log(userFirstSeen);
                 firstSeenCheck(userFirstSeen, box);
             }
+            console.log(factionCorrect);
+            console.log(classCorrect);
+            console.log(raceCorrect);
+            console.log(genderCorrect);
+            console.log(appearanceCorrect);
             winnerCheck();
             loserCheck();
         }, ((i + 1) * animation_duration) / 2); 
@@ -116,51 +116,61 @@ function updateGrid(userInput) {
 
         
 function factionCheck(userFaction, box) {
-    console.log(userFaction)
-    console.log(answer.faction)
-    if (userFaction === answer.faction) {
-        factionCorrect = true;
-        box.classList.add('right');
-        box.textContent = userFaction;
+    let factionString = userFaction;
+    let factionArray = factionString.split(/[,\s]+/);
+    console.log(factionArray);
+    for (let i = 0; i <= factionArray.length; i++) {
+        if (userFaction === answer.faction) {
+            factionCorrect = true;
+            box.classList.add('right');
+            box.textContent = userFaction;
+        }
+        else if (answer.faction.includes(factionArray[i])) {
+            box.classList.add('wrong')
+            box.textContent = userFaction;
+        }
+        else {
+            box.textContent = userFaction;
+        }
     }
-    else if (userFaction.indexOf(answer.faction) >= 0) {
-        box.classList.add('wrong')
-        box.textContent = userFaction;
-    }
-    else {
-        box.textContent = userFaction;
-    }
-    console.log(userFaction.indexOf(answer.faction))
 }
 
 function classCheck(userClass, box) {
+    let classString = userClass;
+    let classArray = classString.split(/[,\s]+/);
+    for (let i = 0; i <= classArray.length; i++) {
         if (userClass === answer.class) {
+            classCorrect = true;
             box.classList.add('right');
             box.textContent = userClass;
-            classCorrect = true;
         }
-        else if (userClass.indexOf(answer.class) >= 0) {
+        else if (answer.class.includes(classArray[i])) {
             box.classList.add('wrong')
             box.textContent = userClass;
         }
         else {
             box.textContent = userClass;
         }
+    }
 }
 
 function speciesCheck(userSpecies, box) {
+    let speciesString = userSpecies;
+    let speciesArray = speciesString.split(/[,\s]+/);
+    for (let i = 0; i <= speciesArray.length; i++) {
         if (userSpecies === answer.species) {
+            raceCorrect = true;
             box.classList.add('right');
             box.textContent = userSpecies;
-            raceCorrect = true;
         }
-        else if (userSpecies.indexOf(answer.species) >= 0) {
+        else if (answer.class.includes(speciesArray[i])) {
             box.classList.add('wrong')
             box.textContent = userSpecies;
         }
         else {
             box.textContent = userSpecies;
         }
+    }
 }
 
 function genderCheck(userGender, box) {
@@ -168,10 +178,6 @@ function genderCheck(userGender, box) {
             box.classList.add('right');
             box.textContent = userGender;
             genderCorrect = true;
-        }
-        else if (userGender.indexOf(answer.gender) >= 0) {
-            box.classList.add('wrong')
-            box.textContent = userGender;
         }
         else {
             box.textContent = userGender;
@@ -183,9 +189,6 @@ function firstSeenCheck(userFirstSeen, box) {
             box.classList.add('right');
             box.textContent = userFirstSeen;
             appearanceCorrect = true;
-        } else if (userFirstSeen.indexOf(answer.firstSeen) >= 0) {
-            box.classList.add('wrong');
-            box.textContent = userFirstSeen;
         } else {
             box.textContent = userFirstSeen;
         }
@@ -196,21 +199,13 @@ function winnerCheck() {
     
     if (factionCorrect && classCorrect && raceCorrect && genderCorrect && appearanceCorrect) {
         winner = true;
-        setTimeout(function() { alert('You win!'); }, 500)
-    }
-    else {
-        // console.log('Faction match: ' + factionCorrect);
-        // console.log('Class match: ' + classCorrect);
-        // console.log('Race match: ' + raceCorrect);
-        // console.log('Gender match: ' + genderCorrect);
-        // console.log('Appearance match: ' + appearanceCorrect);
+        setTimeout(function() { alert('You win!'); }, 1500)
     }
 }
 
 function loserCheck() {
-    console.log('Check if user lost');
     if (row === 5 && !winner){
-        setTimeout(function() { window.alert('Sorry, you are out of guesses! The answer was ' + answer.name); }, 1500)
+        setTimeout(function() { window.alert('Sorry, you are out of guesses! The answer was ' + answer.name); }, 1000)
     }
 }
 
