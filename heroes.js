@@ -2,7 +2,7 @@ const heroes = [
 
     {
         "name": "Uther",
-        "icon": '../assets/uther.jpg',
+        "icon": './assets/uther.jpg',
         "faction": "Alliance, Silver Hand",
         "species": "Human",
         "gender": "Male",
@@ -12,7 +12,7 @@ const heroes = [
 
     {
         "name": "Jaina",
-        "icon": '../assets/jaina.jpg',
+        "icon": './assets/jaina.jpg',
         "faction": "Alliance, Kirin Tor",
         "species": "Human",
         "gender": "Female",
@@ -22,7 +22,7 @@ const heroes = [
 
     {
         "name": "Anduin",
-        "icon": '../assets/anduin.png',
+        "icon": './assets/anduin.png',
         "faction": "Alliance",
         "species": "Human",
         "gender": "Male",
@@ -32,7 +32,7 @@ const heroes = [
 
     {
         "name": "Greymane",
-        "icon": '../assets/greymane.jpg',
+        "icon": './assets/greymane.jpg',
         "faction": "Alliance, Gilneas",
         "species": "Human, Worgan",
         "gender": "Male",
@@ -42,7 +42,7 @@ const heroes = [
 
     {
         "name": "Sylvanas",
-        "icon": '../assets/sylvanas.jpg',
+        "icon": './assets/sylvanas.jpg',
         "faction": "Horde, Forsaken",
         "species": "High Elf, Undead",
         "gender": "Female",
@@ -51,7 +51,7 @@ const heroes = [
     },
     {
         "name": "Thrall",
-        "icon": '../assets/thrall.jpg',
+        "icon": './assets/thrall.jpg',
         "faction": "Horde, Frostwolves",
         "species": "Orc",
         "gender": "Male",
@@ -60,7 +60,7 @@ const heroes = [
     },
     {
         "name": "Gar'rosh",
-        "icon": '../assets/garrosh.jpg',
+        "icon": './assets/garrosh.jpg',
         "faction": "Horde, Iron Horde",
         "species": "Orc",
         "gender": "Male",
@@ -69,7 +69,7 @@ const heroes = [
     },
     {
         "name": "Kael'thas",
-        "icon": '../assets/kaelthas.jpg',
+        "icon": './assets/kaelthas.jpg',
         "faction": "Alliance, Kirin Tor, Burning Legion",
         "species": "High Elf, Blood Elf",
         "gender": "Male",
@@ -79,7 +79,7 @@ const heroes = [
 
     {
         "name": "Hogger",
-        "icon": '../assets/hogger.png',
+        "icon": './assets/hogger.png',
         "faction": "Riverpaw Pack, Defias Brotherhood",
         "species": "Gnoll",
         "gender": "Male",
@@ -89,7 +89,7 @@ const heroes = [
 
     {
         "name": "Deathwing",
-        "icon": '../assets/deathwing.jpg',
+        "icon": './assets/deathwing.jpg',
         "faction": "Black Dragonflight, Former Earthwarder",
         "species": "Dragon",
         "gender": "Male",
@@ -99,7 +99,7 @@ const heroes = [
 
     {
         "name": "Alexstrasza",
-        "icon": '../assets/alexstrasza.png',
+        "icon": './assets/alexstrasza.png',
         "faction": "Red Dragonflight, Aspect of Life",
         "species": "Dragon",
         "gender": "Female",
@@ -109,7 +109,7 @@ const heroes = [
 
     {
         "name": "Tyrande",
-        "icon": '../assets/tyrande.jpg',
+        "icon": './assets/tyrande.jpg',
         "faction": "Alliance, Elunites",
         "species": "Night Elf",
         "gender": "Female",
@@ -119,7 +119,7 @@ const heroes = [
 
     {
         "name": "Arthas",
-        "icon": '../assets/arthas.jpg',
+        "icon": './assets/arthas.jpg',
         "faction": "Alliance, Scourge",
         "species": "Human, Undead",
         "gender": "Male",
@@ -129,7 +129,7 @@ const heroes = [
 
     {
         "name": "Kel'thuzad",
-        "icon": '../assets/kelthuzad.jpg',
+        "icon": './assets/kelthuzad.jpg',
         "faction": "Cult of the Damned, Scourge",
         "species": "Human, Undead",
         "gender": "Male",
@@ -139,7 +139,7 @@ const heroes = [
 
     {
         "name": "Whitemane",
-        "icon": '../assets/whitemane.png',
+        "icon": './assets/whitemane.png',
         "faction": "Scarlet Crusade",
         "species": "Human",
         "gender": "Female",
@@ -149,7 +149,7 @@ const heroes = [
 
     {
         "name": "Maiev",
-        "icon": '../assets/maiev.jpg',
+        "icon": './assets/maiev.jpg',
         "faction": "Alliance, Wardens",
         "species": "Night Elf",
         "gender": "Female",
@@ -159,7 +159,7 @@ const heroes = [
 
     {
         "name": "Gazlowe",
-        "icon": '../assets/gazlowe.jpg',
+        "icon": './assets/gazlowe.jpg',
         "faction": "Horde",
         "species": "Goblin",
         "gender": "Male",
@@ -169,7 +169,7 @@ const heroes = [
 
     {
         "name": "Anub'arak",
-        "icon": '../assets/anubarak.jpg',
+        "icon": './assets/anubarak.jpg',
         "faction": "Scourge, Azjol-Nerub",
         "species": "Nerubian, Undead",
         "gender": "Male",
@@ -179,7 +179,7 @@ const heroes = [
 
     {
         "name": "Illidan",
-        "icon": '../assets/illidan.jpg',
+        "icon": './assets/illidan.jpg',
         "faction": "Burning Legion, Illidari",
         "species": "Night Elf",
         "gender": "Male",
@@ -189,7 +189,7 @@ const heroes = [
 
     {
         "name": "Malfurion",
-        "icon": '../assets/Malfurion.jpg',
+        "icon": './assets/Malfurion.jpg',
         "faction": "Alliance, Cenarion Circle",
         "species": "Night Elf",
         "gender": "Male",
@@ -199,7 +199,7 @@ const heroes = [
 
     {
         "name": "Edwin Vancleef",
-        "icon": '../assets/edwinvancleef.jpg',
+        "icon": './assets/edwinvancleef.jpg',
         "faction": "Defias Brotherhood, Stonemasons Guild",
         "species": "Human",
         "gender": "Male",
