@@ -104,28 +104,20 @@ function updateGrid(userInput) {
                 console.log(userFirstSeen);
                 firstSeenCheck(userFirstSeen, box);
             }
-            winnerCheck()
+            winnerCheck();
+            loserCheck();
         }, ((i + 1) * animation_duration) / 2); 
             box.classList.add('animation');
             box.style.animationDelay = `${(i * animation_duration) / 2}ms`;
     }
     row++;
-    attemptNumber++;
-    // console.log('Faction match: ' + factionCorrect);
-    // console.log('Class match: ' + classCorrect);
-    // console.log('Race match: ' + raceCorrect);
-    // console.log('Gender match: ' + genderCorrect);
-    // console.log('Appearance match: ' + appearanceCorrect);
-    // setTimeout(winnerCheck(), 5000);
-
-    // if (row === 5){
-    //     setTimeout(loserCheck(), 2000)
-    // }
-    
+    attemptNumber++;    
 }
 
         
 function factionCheck(userFaction, box) {
+    console.log(userFaction)
+    console.log(answer.faction)
     if (userFaction === answer.faction) {
         factionCorrect = true;
         box.classList.add('right');
@@ -138,6 +130,7 @@ function factionCheck(userFaction, box) {
     else {
         box.textContent = userFaction;
     }
+    console.log(userFaction.indexOf(answer.faction))
 }
 
 function classCheck(userClass, box) {
@@ -179,11 +172,9 @@ function genderCheck(userGender, box) {
         else if (userGender.indexOf(answer.gender) >= 0) {
             box.classList.add('wrong')
             box.textContent = userGender;
-            resolve(false);
         }
         else {
             box.textContent = userGender;
-            resolve(false);
         }
 }
 
@@ -208,18 +199,18 @@ function winnerCheck() {
         setTimeout(function() { alert('You win!'); }, 500)
     }
     else {
-        console.log('Faction match: ' + factionCorrect);
-        console.log('Class match: ' + classCorrect);
-        console.log('Race match: ' + raceCorrect);
-        console.log('Gender match: ' + genderCorrect);
-        console.log('Appearance match: ' + appearanceCorrect);
+        // console.log('Faction match: ' + factionCorrect);
+        // console.log('Class match: ' + classCorrect);
+        // console.log('Race match: ' + raceCorrect);
+        // console.log('Gender match: ' + genderCorrect);
+        // console.log('Appearance match: ' + appearanceCorrect);
     }
 }
 
 function loserCheck() {
     console.log('Check if user lost');
     if (row === 5 && !winner){
-        window.alert('Sorry, you are out of guesses! The answer was ' + answer.name)
+        setTimeout(function() { window.alert('Sorry, you are out of guesses! The answer was ' + answer.name); }, 1500)
     }
 }
 

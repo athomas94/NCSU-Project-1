@@ -81,11 +81,11 @@ body {
 }
 
 .box.wrong {
-    background: var(--wrong);
+    background-color: var(--wrong);
 }
 
 .box.right {
-    background: var(--correct);
+    background-color: var(--correct);
 }
 
 .animation {

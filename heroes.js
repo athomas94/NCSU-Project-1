@@ -3,7 +3,7 @@ const heroes = [
     {
         "name": "Uther",
         "icon": '../assets/uther.jpg',
-        "faction": "Alliance",
+        "faction": "Alliance, Silver Hand",
         "species": "Human",
         "gender": "Male",
         "class": "Paladin",
@@ -13,7 +13,7 @@ const heroes = [
     {
         "name": "Jaina",
         "icon": '../assets/jaina.jpg',
-        "faction": "Alliance",
+        "faction": "Alliance, Kirin Tor",
         "species": "Human",
         "gender": "Female",
         "class": "Mage",
@@ -33,7 +33,7 @@ const heroes = [
     {
         "name": "Greymane",
         "icon": '../assets/greymane.jpg',
-        "faction": "Alliance",
+        "faction": "Alliance, Gilneas",
         "species": "Human, Worgan",
         "gender": "Male",
         "class": "Rouge",
@@ -52,25 +52,25 @@ const heroes = [
     {
         "name": "Thrall",
         "icon": '../assets/thrall.jpg',
-        "faction": "Horde",
+        "faction": "Horde, Frostwolves",
         "species": "Orc",
         "gender": "Male",
         "class": "Shaman",
         "firstSeen": "Warcraft III: Reign of Chaos"
     },
     {
-        "name": "Garrosh",
+        "name": "Gar'rosh",
         "icon": '../assets/garrosh.jpg',
-        "faction": "Horde",
+        "faction": "Horde, Iron Horde",
         "species": "Orc",
         "gender": "Male",
         "class": "Warrior",
         "firstSeen": "World of Warcraft: Burning Crusade"
     },
     {
-        "name": "Kaelthas",
+        "name": "Kael'thas",
         "icon": '../assets/kaelthas.jpg',
-        "faction": "Alliance, Kirin Tor, Legion",
+        "faction": "Alliance, Kirin Tor, Burning Legion",
         "species": "High Elf, Blood Elf",
         "gender": "Male",
         "class": "Mage",
@@ -80,7 +80,7 @@ const heroes = [
     {
         "name": "Hogger",
         "icon": '../assets/hogger.png',
-        "faction": "Riverpaw Pack",
+        "faction": "Riverpaw Pack, Defias Brotherhood",
         "species": "Gnoll",
         "gender": "Male",
         "class": "Warrior",
@@ -110,7 +110,7 @@ const heroes = [
     {
         "name": "Tyrande",
         "icon": '../assets/tyrande.jpg',
-        "faction": "Alliance",
+        "faction": "Alliance, Elunites",
         "species": "Night Elf",
         "gender": "Female",
         "class": "Priest",
@@ -128,7 +128,7 @@ const heroes = [
     },
 
     {
-        "name": "Kelthuzad",
+        "name": "Kel'thuzad",
         "icon": '../assets/kelthuzad.jpg',
         "faction": "Cult of the Damned, Scourge",
         "species": "Human, Undead",
@@ -150,7 +150,7 @@ const heroes = [
     {
         "name": "Maiev",
         "icon": '../assets/maiev.jpg',
-        "faction": "Alliance, The Wardens",
+        "faction": "Alliance, Wardens",
         "species": "Night Elf",
         "gender": "Female",
         "class": "Warden",
@@ -168,7 +168,7 @@ const heroes = [
     },
 
     {
-        "name": "Anubarak",
+        "name": "Anub'arak",
         "icon": '../assets/anubarak.jpg',
         "faction": "Scourge, Azjol-Nerub",
         "species": "Nerubian, Undead",
@@ -189,12 +189,22 @@ const heroes = [
 
     {
         "name": "Malfurion",
-        "icon": '../assets/illidan.jpg',
+        "icon": '../assets/Malfurion.jpg',
         "faction": "Alliance, Cenarion Circle",
         "species": "Night Elf",
         "gender": "Male",
         "class": "Druid",
         "firstSeen": "Warcraft III: The Frozen Throne"
+    },
+
+    {
+        "name": "Edwin Vancleef",
+        "icon": '../assets/edwinvancleef.jpg',
+        "faction": "Defias Brotherhood, Stonemasons Guild",
+        "species": "Human",
+        "gender": "Male",
+        "class": "Rogue",
+        "firstSeen": "World of Warcraft (2004)"
     },
     
 ]
