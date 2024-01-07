@@ -169,24 +169,40 @@ function speciesCheck(userSpecies, box) {
 }
 
 function genderCheck(userGender, box) {
-        if (userGender === answer.gender) {
-            box.classList.add('right');
-            box.textContent = userGender;
-            genderCorrect = true;
-        }
-        else {
-            box.textContent = userGender;
-        }
+    if (userGender === answer.gender) {
+        box.classList.add('right');
+        box.textContent = userGender;
+        genderCorrect = true;
+    }
+    else {
+        box.textContent = userGender;
+    }
 }
 
 function firstSeenCheck(userFirstSeen, box) {
-        if (userFirstSeen === answer.firstSeen) {
-            box.classList.add('right');
-            box.textContent = userFirstSeen;
-            appearanceCorrect = true;
-        } else {
-            box.textContent = userFirstSeen;
-        }
+    if (userFirstSeen === answer.firstSeen) {
+        box.classList.add('right');
+        box.textContent = userFirstSeen;
+        appearanceCorrect = true;
+    } else {
+        box.textContent = userFirstSeen;
+    }
+}
+
+function hints() {
+    const hintArea = document.getElementByClass('hints');
+    const hint = document.createElement('ul')
+    if (attemptNumber === 3) {
+        let hintHeader = document.getElementById('hintHeader');
+        hintHeader.style.opacity = "1";
+        hint.li = answer.hint1;
+    }
+    if (attemptNumber === 4) {
+        hint.li = answer.hint2;
+    }
+    if (attemptNumber === 5) {
+        hint.li = answer.hint3;
+    }
 }
       
 
@@ -195,7 +211,7 @@ function winnerCheck() {
     if (factionCorrect && classCorrect && raceCorrect && genderCorrect && appearanceCorrect) {
         winner = true;
         // wins++;
-        setTimeout(function() { alert('You win!'); }, 1500)
+        setTimeout(function() { alert('You win!'); }, 1250)
     }
 }
 

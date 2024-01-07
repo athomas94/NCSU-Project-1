@@ -91,6 +91,21 @@ h3 {
     object-fit: cover;
 }
 
+.hintArea {
+    opacity: 0;
+    width: 100%;
+    margin-top: 1rem;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.hintArea ul {
+    width: 100%;
+    list-style: none;
+}
+
 /* Set the states of the box after each guess using the color variables in the root */
 .box.empty {
     background: var(--empty);
