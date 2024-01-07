@@ -115,6 +115,7 @@ h3 {
     list-style: none;
 }
 
+/* Defining the style of the popup modal for winners and losers */
 .modal {
     display: flex;
     flex-direction: column;
