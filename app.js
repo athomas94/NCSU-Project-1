@@ -114,7 +114,6 @@ function updateGrid(userInput) {
 function factionCheck(userFaction, box) {
     let factionString = userFaction;
     let factionArray = factionString.split(/\s*,\s*/);
-    console.log(factionArray);
     for (let i = 0; i <= factionArray.length; i++) {
         if (userFaction === answer.faction) {
             factionCorrect = true;
@@ -134,7 +133,6 @@ function factionCheck(userFaction, box) {
 function classCheck(userClass, box) {
     let classString = userClass;
     let classArray = classString.split(/\s*,\s*/);
-    console.log(classArray);
     for (let i = 0; i <= classArray.length; i++) {
         if (userClass === answer.class) {
             classCorrect = true;
@@ -154,7 +152,6 @@ function classCheck(userClass, box) {
 function speciesCheck(userSpecies, box) {
     let speciesString = userSpecies;
     let speciesArray = speciesString.split(/\s*,\s*/);
-    console.log(speciesArray);
     for (let i = 0; i <= speciesArray.length; i++) {
         if (userSpecies === answer.species) {
             raceCorrect = true;
@@ -210,10 +207,7 @@ function loserCheck() {
 }
 
 function playAgain() {
-    var playAgainButton = document.getElementById('playAgain');
-    playAgainButton.addEventListener('click', function() {
-        location.reload();
-    });
+        window.location.reload();
 }
 
 // function winCounter() {

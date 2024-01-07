@@ -4,6 +4,22 @@ body {
     background: var(--default);
 }
 
+h1 {
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    font-size: 58px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h3 {
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 /* Define the colors that will be used on repeat throughout the project */
 :root {
      --default: #121213;
