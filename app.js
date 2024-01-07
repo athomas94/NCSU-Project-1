@@ -218,22 +218,48 @@ function hints(attemptCount) {
         hintArea.appendChild(hint);
     }
 }
+
+function modal() {
+    const modal = document.querySelector(".modal");
+    const overlay = document.querySelector(".overlay");
+    const closeModalBtn = document.querySelector(".button-close");
+    let modalHeader = document.getElementById('modalHeader')
+    let modalBody = document.getElementById('modalBody')
+
+    if (!winner) {
+        modalHeader.innerHTML = "Nice try!";
+        modalBody.innerHTML = "The answer was " + answer.name + ". Would you like to play again?";
+    }
+    else {
+        modalHeader.innerHTML = "Great Job!";
+        modalBody.innerHTML = "Would you like to play again?";
+    }
+    const openModal = function () {
+        modal.classList.remove("hidden");
+        overlay.classList.remove("hidden");
+      };
+    openModal();
+
+    const closeModal = function () {
+        modal.classList.add("hidden");
+        overlay.classList.add("hidden");
+      };
+      closeModalBtn.addEventListener("click", closeModal);
+}
       
 // Check to see if the user has won by getting all of the requisite attribute fields matching
 function winnerCheck() {
     
     if (factionCorrect && classCorrect && raceCorrect && genderCorrect && appearanceCorrect) {
         winner = true;
-        // wins++;
-        setTimeout(function() { alert('You win!'); }, 1250)
+        setTimeout(function() {modal()}, 1000);
     }
 }
 
 // Check to see if the user has lost based on how many guess they've had
 function loserCheck() {
     if (row === 5 && !winner){
-        wins = 0;
-        setTimeout(function() { window.alert('Sorry, you are out of guesses! The answer was ' + answer.name); }, 1000)
+        setTimeout(function() {modal()}, 1250);
     }
 }
 

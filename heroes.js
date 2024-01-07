@@ -77,7 +77,7 @@ const heroes = [
         "hint3": "Weilder of the legendary Doomhammer"
     },
     {
-        "name": "Gar'rosh",
+        "name": "Garrosh",
         "icon": './assets/garrosh.jpg',
         "faction": "Horde, Iron Horde",
         "species": "Orc",
