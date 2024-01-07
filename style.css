@@ -1,7 +1,7 @@
 /* Set the entire body and HTML to have the default color variable defined in the root */
 html,
 body {
-    background: var(--default);
+    background-color: var(--default);
     display: flex;
     flex-direction: column;
     align-items: center;
