@@ -268,6 +268,6 @@ const heroes = [
         "hint1": "Felt betrayed by Stormwind after the rebuilding of the city",
         "hint2": "Formed a gang of former masons and outlaws",
         "hint3": "Known for his trademark red bandana"
-    },
+    }
     
 ]

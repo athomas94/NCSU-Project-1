@@ -13,6 +13,7 @@ let winner = false;
 
 console.log(answer);
 
+// Functions for drawing the actual grid and box structure for the game
 function drawBoxes(container, row, col) {
     const box = document.createElement('div');
     box.className = 'box';
@@ -35,11 +36,13 @@ function drawGrid(container) {
     container.appendChild(grid);
 }
 
+// Function for randomly selecting a hero object as the answer
 function getRandomHero() {
     const randomHeroIndex = Math.floor(Math.random() * heroList.length);
     return heroList[randomHeroIndex];
 }
 
+// Import the user input in the text box
 function getInput() {
     document.body.onkeydown = (e) => {
         const key = e.key;
@@ -51,6 +54,7 @@ function getInput() {
     }
 }
 
+// Handle and clean the user input and call the update grid with the user's guess
 function getAttempt(userGuess) {
     let updatedGuess = userGuess.replaceAll(/[^a-zA-Z]/gi, "");
     updatedGuess = updatedGuess.toLowerCase();
@@ -64,6 +68,7 @@ function getAttempt(userGuess) {
     }
 }
 
+// Take the user's input, compare it to the answer object, and display correct, partial, or wrong to the user
 function updateGrid(userInput) {
     const animation_duration = 500; //ms
     
@@ -107,10 +112,11 @@ function updateGrid(userInput) {
             box.style.animationDelay = `${(i * animation_duration) / 2}ms`;
     }
     row++;
-    attemptNumber++;    
+    attemptNumber++;  
+    // hints(attemptNumber);
 }
 
-        
+// Check the faction of the user guess object and compare to the answer object to see if they match        
 function factionCheck(userFaction, box) {
     let factionString = userFaction;
     let factionArray = factionString.split(/\s*,\s*/);
@@ -121,7 +127,7 @@ function factionCheck(userFaction, box) {
             box.textContent = userFaction;
         }
         else if (answer.faction.includes(factionArray[i])) {
-            box.classList.add('wrong')
+            box.classList.add('partial')
             box.textContent = userFaction;
         }
         else {
@@ -130,6 +136,7 @@ function factionCheck(userFaction, box) {
     }
 }
 
+// Check the class of the user guess object and compare to the answer object to see if they match
 function classCheck(userClass, box) {
     let classString = userClass;
     let classArray = classString.split(/\s*,\s*/);
@@ -140,7 +147,7 @@ function classCheck(userClass, box) {
             box.textContent = userClass;
         }
         else if (answer.class.includes(classArray[i])) {
-            box.classList.add('wrong')
+            box.classList.add('partial')
             box.textContent = userClass;
         }
         else {
@@ -149,6 +156,7 @@ function classCheck(userClass, box) {
     }
 }
 
+// Check the species of the user guess object and compare to the answer object to see if they match
 function speciesCheck(userSpecies, box) {
     let speciesString = userSpecies;
     let speciesArray = speciesString.split(/\s*,\s*/);
@@ -159,7 +167,7 @@ function speciesCheck(userSpecies, box) {
             box.textContent = userSpecies;
         }
         else if (answer.species.includes(speciesArray[i])) {
-            box.classList.add('wrong')
+            box.classList.add('partial')
             box.textContent = userSpecies;
         }
         else {
@@ -168,6 +176,7 @@ function speciesCheck(userSpecies, box) {
     }
 }
 
+// Check the gender of the user guess object and compare to the answer object to see if they match
 function genderCheck(userGender, box) {
     if (userGender === answer.gender) {
         box.classList.add('right');
@@ -179,6 +188,7 @@ function genderCheck(userGender, box) {
     }
 }
 
+// Check the appearacnce attribute of the user guess object and compare to the answer object to see if they match
 function firstSeenCheck(userFirstSeen, box) {
     if (userFirstSeen === answer.firstSeen) {
         box.classList.add('right');
@@ -189,23 +199,27 @@ function firstSeenCheck(userFirstSeen, box) {
     }
 }
 
-function hints() {
+// Basic code for creating hints for a user *NON-FUNCTIONAL CURRENTLY*
+function hints(attemptCount) {
     const hintArea = document.getElementByClass('hints');
     const hint = document.createElement('ul')
-    if (attemptNumber === 3) {
+    if (attemptCount === 3) {
         let hintHeader = document.getElementById('hintHeader');
         hintHeader.style.opacity = "1";
-        hint.li = answer.hint1;
+        hint.innerHTML = '<li>' + answer.hint1 + '/<li>'
+        hintArea.appendChild(hint);
     }
-    if (attemptNumber === 4) {
-        hint.li = answer.hint2;
+    if (attemptCount === 4) {
+        hint.innerHTML = '<li>' + answer.hint2 + '/<li>'
+        hintArea.appendChild(hint);
     }
-    if (attemptNumber === 5) {
-        hint.li = answer.hint3;
+    if (attemptCount === 5) {
+        hint.innerHTML = '<li>' + answer.hint3 + '/<li>'
+        hintArea.appendChild(hint);
     }
 }
       
-
+// Check to see if the user has won by getting all of the requisite attribute fields matching
 function winnerCheck() {
     
     if (factionCorrect && classCorrect && raceCorrect && genderCorrect && appearanceCorrect) {
@@ -215,6 +229,7 @@ function winnerCheck() {
     }
 }
 
+// Check to see if the user has lost based on how many guess they've had
 function loserCheck() {
     if (row === 5 && !winner){
         wins = 0;
@@ -222,6 +237,7 @@ function loserCheck() {
     }
 }
 
+// Clears the grid and selects a new random object as the answer
 function playAgain() {
         window.location.reload();
 }
@@ -237,6 +253,7 @@ function playAgain() {
 //     document.getElementById('winCounter').innerHTML = winCount;
 // }
 
+//This function runs on page load where the grid and boxes are all drawn and labeled
 function onStart() {
     const game = document.getElementById('game');
     drawGrid(game);

@@ -4,6 +4,7 @@ body {
     background: var(--default);
 }
 
+/* Basic heading formatting */
 h1 {
     width: 100%;
     text-align: center;
@@ -24,7 +25,7 @@ h3 {
 :root {
      --default: #121213;
      --empty: #3a3a3c;
-     --wrong: #ff8f00;
+     --partial: #ff8f00;
      --correct: #538d4e;
      }
 
@@ -81,6 +82,7 @@ h3 {
     object-fit: cover;
 }
 
+/* Define style for images being populated in the first box */
 .box img {
     width: 100%;
     height: 100%;
@@ -91,6 +93,7 @@ h3 {
     object-fit: cover;
 }
 
+/* Define styling for the hints area */
 .hintArea {
     opacity: 0;
     width: 100%;
@@ -111,8 +114,8 @@ h3 {
     background: var(--empty);
 }
 
-.box.wrong {
-    background-color: var(--wrong);
+.box.partial {
+    background-color: var(--partial);
 }
 
 .box.right {
@@ -123,6 +126,7 @@ h3 {
     animation: flipping 0.5s ease;
 }
 
+/* Animation for flipping cards for reveals */
 @keyframes flipping {
     0% {
         transform: scaleX(1);
