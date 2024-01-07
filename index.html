@@ -9,10 +9,18 @@
 <body>
     <h1>WoW-dle</h1>
     <h3>Enter a character's name, and use their attributes to try and guess the hidden character!</h3>
+    <h4>Spelling DOES matter, but punctuation does not!</h4>
 
-    <div class = "hintArea">
+    <!-- <div class = "hintArea">
         <h4 id = "hintHeader">Hints:</h4>
         <div class = "hints"></div>
+    </div> -->
+
+    <div class="grid" style="margin-top: 20px; margin-bottom: 20px;">
+        <input type = "text" id = "answerBox" placeholder = "Take a guess" maxlength = "20"><br>
+        <div class="box right">Correct</div>
+        <div class="box partial">Partially Correct</div>
+        <div class="box">Incorrect</div>
     </div>
 
     <div id = "game">
@@ -24,13 +32,6 @@
             <div class="headerBox">Gender</div>
             <div class="headerBox">First Appearance</div>
         </div>
-    </div>
-    
-    <div class="grid" style="margin-top: 100px;">
-        <input type = "text" id = "answerBox" placeholder = "Take a guess" maxlength = "20"><br>
-        <div class="box right">Correct</div>
-        <div class="box partial">Partially Correct</div>
-        <div class="box">Incorrect</div>
     </div>
 
     <section class="modal hidden">

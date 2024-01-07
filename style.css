@@ -5,9 +5,10 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     position: relative;
     min-height: 100vh;
+    margin-top: 0;
 }
 
 /* Basic heading formatting */
@@ -24,6 +25,14 @@ h3 {
     text-align: center;
     color: #fff;
     font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h4 {
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
     font-family: Arial, Helvetica, sans-serif;
 }
 

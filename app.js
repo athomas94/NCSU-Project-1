@@ -219,6 +219,7 @@ function hints(attemptCount) {
     }
 }
 
+// Functionality for the modal display/hiding
 function modal() {
     const modal = document.querySelector(".modal");
     const overlay = document.querySelector(".overlay");
