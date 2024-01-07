@@ -110,7 +110,7 @@ const heroes = [
     {
         "name": "Tyrande",
         "icon": './assets/tyrande.jpg',
-        "faction": "Alliance, Elunites",
+        "faction": "Alliance, Sisters of Elune",
         "species": "Night Elf",
         "gender": "Female",
         "class": "Priest",

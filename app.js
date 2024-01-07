@@ -9,6 +9,7 @@ let raceCorrect = false;
 let genderCorrect = false;
 let appearanceCorrect = false;
 let winner = false;
+// let wins = winCounter();
 
 console.log(answer);
 
@@ -99,11 +100,6 @@ function updateGrid(userInput) {
                 const userFirstSeen = userInput.firstSeen;
                 firstSeenCheck(userFirstSeen, box);
             }
-            console.log(factionCorrect);
-            console.log(classCorrect);
-            console.log(raceCorrect);
-            console.log(genderCorrect);
-            console.log(appearanceCorrect);
             winnerCheck();
             loserCheck();
         }, ((i + 1) * animation_duration) / 2); 
@@ -117,7 +113,7 @@ function updateGrid(userInput) {
         
 function factionCheck(userFaction, box) {
     let factionString = userFaction;
-    let factionArray = factionString.split(/[,\s]+/);
+    let factionArray = factionString.split(/\s*,\s*/);
     console.log(factionArray);
     for (let i = 0; i <= factionArray.length; i++) {
         if (userFaction === answer.faction) {
@@ -137,7 +133,8 @@ function factionCheck(userFaction, box) {
 
 function classCheck(userClass, box) {
     let classString = userClass;
-    let classArray = classString.split(/[,\s]+/);
+    let classArray = classString.split(/\s*,\s*/);
+    console.log(classArray);
     for (let i = 0; i <= classArray.length; i++) {
         if (userClass === answer.class) {
             classCorrect = true;
@@ -156,14 +153,15 @@ function classCheck(userClass, box) {
 
 function speciesCheck(userSpecies, box) {
     let speciesString = userSpecies;
-    let speciesArray = speciesString.split(/[,\s]+/);
+    let speciesArray = speciesString.split(/\s*,\s*/);
+    console.log(speciesArray);
     for (let i = 0; i <= speciesArray.length; i++) {
         if (userSpecies === answer.species) {
             raceCorrect = true;
             box.classList.add('right');
             box.textContent = userSpecies;
         }
-        else if (answer.class.includes(speciesArray[i])) {
+        else if (answer.species.includes(speciesArray[i])) {
             box.classList.add('wrong')
             box.textContent = userSpecies;
         }
@@ -199,15 +197,35 @@ function winnerCheck() {
     
     if (factionCorrect && classCorrect && raceCorrect && genderCorrect && appearanceCorrect) {
         winner = true;
+        // wins++;
         setTimeout(function() { alert('You win!'); }, 1500)
     }
 }
 
 function loserCheck() {
     if (row === 5 && !winner){
+        wins = 0;
         setTimeout(function() { window.alert('Sorry, you are out of guesses! The answer was ' + answer.name); }, 1000)
     }
 }
+
+function playAgain() {
+    var playAgainButton = document.getElementById('playAgain');
+    playAgainButton.addEventListener('click', function() {
+        location.reload();
+    });
+}
+
+// function winCounter() {
+//     var winCount = localStorage.getItem("winCount");
+
+//     if (winCount === null) {
+//         winCount = 0;
+//         localStorage.setItem("winCount", winCount); 
+//     }
+
+//     document.getElementById('winCounter').innerHTML = winCount;
+// }
 
 function onStart() {
     const game = document.getElementById('game');
