@@ -136,7 +136,7 @@ const heroes = [
         "class": "Aspect",
         "firstSeen": "Warcraft II",
         "hint1": "Not part of the Horde or Alliance",
-        "hint2": "The original Dravthyr",
+        "hint2": "The original Drakthyr",
         "hint3": "Known for having healing flame powers"
     },
 
