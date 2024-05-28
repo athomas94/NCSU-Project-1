@@ -1,0 +1,14 @@
+{
+  "name": "ncsu-project-1",
+  "version": "1.0.0",
+  "description": "For this project, I will be creating a wordle type game, where instead of guessing words, you'll be guessing characters from the popular game, World of Warcraft. I hope to implement a system that validates a users input against an array of \"character\" objects, in which 5 basic attributes about the characters will be present.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "sass": "^1.77.2"
+  }
+}

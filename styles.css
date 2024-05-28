@@ -1,0 +1,216 @@
+html,
+body {
+  background-color: #121213;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  min-height: 100vh;
+  margin-top: 0;
+}
+
+h1 {
+  width: 100%;
+  text-align: center;
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 58px;
+}
+
+h3 {
+  width: 100%;
+  text-align: center;
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+}
+
+h4 {
+  width: 100%;
+  text-align: center;
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+/* Set the properties of the game container */
+#game {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 600px;
+}
+
+/* Set the grid that will populate as guesses occur */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(6, auto);
+  grid-template-rows: repeat(6, auto);
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  align-content: space-around;
+}
+
+/* Define the actual boxes that make up the headers */
+.headerBox {
+  height: 100px;
+  margin: 4px;
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  text-wrap: wrap;
+  text-align: center;
+  overflow: hidden;
+  object-fit: cover;
+  width: 104px;
+  border-bottom: 2px solid #ffffff;
+}
+
+/* Define the actual boxes that animate during a guess */
+.box {
+  height: 100px;
+  margin: 4px;
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  text-wrap: wrap;
+  text-align: center;
+  overflow: hidden;
+  object-fit: cover;
+  width: 100px;
+  border: 2px solid #3a3a3c;
+}
+.box img {
+  width: 100%;
+  height: 100%;
+  border: 2px solid #3a3a3c;
+  margin: 4px;
+  text-align: center;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+/* Define styling for the hints area */
+.hintArea {
+  opacity: 0;
+  width: 100%;
+  margin-top: 1rem;
+  text-align: center;
+  color: #ffffff;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.hintArea ul {
+  width: 100%;
+  list-style: none;
+}
+
+/* Defining the style of the popup modal for winners and losers */
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.2rem;
+  width: 450px;
+  padding: 1.3rem;
+  min-height: 175px;
+  position: absolute;
+  top: 20%;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  z-index: 2;
+}
+.modal h3 {
+  color: #121213;
+}
+.modal .flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.modal .input {
+  padding: 0.7rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 0.9em;
+}
+.modal p {
+  font-size: 0.9rem;
+  color: #777;
+  margin: 0.4rem 0 0.4rem;
+}
+.modal .overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: #121213;
+  backdrop-filter: blur(3px);
+  z-index: 1;
+}
+.modal .hidden {
+  display: none;
+}
+.modal button {
+  cursor: pointer;
+  border: none;
+  font-weight: 600;
+}
+.modal #playAgain {
+  display: inline-block;
+  padding: 0.8rem 1.4rem;
+  font-weight: 700;
+  background-color: black;
+  color: #ffffff;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 1em;
+}
+.modal .button-close {
+  transform: translate(10px, -20px);
+  padding: 0.5rem 0.7rem;
+  background: #eee;
+  border-radius: 50%;
+}
+
+/* Set the states of the box after each guess using the color variables in the root */
+.box.empty {
+  background: #3a3a3c;
+}
+
+.box.partial {
+  background-color: #ff8f00;
+}
+
+.box.right {
+  background-color: #538d4e;
+}
+
+.animation {
+  animation: flipping 0.5s ease;
+}
+
+/* Animation for flipping cards for reveals */
+@keyframes flipping {
+  0% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */
